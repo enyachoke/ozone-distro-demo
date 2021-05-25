@@ -1,0 +1,446 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>net.mekomsolutions</groupId>
+  <artifactId>ozone-distro-demo</artifactId>
+  <name>Ozone Demo distribution</name>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <developers>
+    <developer>
+      <name>Mekom Solutions</name>
+    </developer>
+  </developers>
+  <organization>
+    <name>Mekom Solutions</name>
+    <url>http://www.mekomsolutions.com</url>
+  </organization>
+
+  <properties>
+
+    <distro.baseDir>${project.build.directory}/${project.artifactId}-${project.version}</distro.baseDir>
+    <distro.openmrsconfigDir>${distro.baseDir}/openmrs_config</distro.openmrsconfigDir>
+    <distro.openmrsDistroConfigDir>${distro.baseDir}/openmrs_distro</distro.openmrsDistroConfigDir>
+    <distro.eipRoutesDir>${distro.baseDir}/eip_routes</distro.eipRoutesDir>
+    <distro.odooconfigDir>${distro.baseDir}/odoo_config</distro.odooconfigDir>
+    <distro.odooAddonsDir>${distro.baseDir}/odoo_addons</distro.odooAddonsDir>
+    <distro.openmrscoreDir>${distro.baseDir}/openmrs_core</distro.openmrscoreDir>
+    <distro.openmrsmodulesDir>${distro.baseDir}/openmrs_modules</distro.openmrsmodulesDir>
+
+   <!-- OpenMRS Core -->
+    <openMRSVersion>2.4.0</openMRSVersion>
+
+    <!-- Configs -->
+    <openmrsConfigVersion>1.0.0-SNAPSHOT</openmrsConfigVersion>
+    <microfrontendsConfigVersion>1.0.0-SNAPSHOT</microfrontendsConfigVersion>
+
+    <!-- EIP routes -->
+    <eipRoutesSenaite>1.0.0-SNAPSHOT</eipRoutesSenaite>
+    <eipRoutesOdoo>1.0-SNAPSHOT</eipRoutesOdoo>
+
+    <distro.microfrontendsDir>${distro.baseDir}/microfrontends</distro.microfrontendsDir>
+    <!-- <distro.microfrontendsConfigDir>${distro.baseDir}/microfrontends_config</distro.microfrontendsConfigDir> -->
+
+
+
+    <!-- App Shell -->
+    <appShellVersion>next</appShellVersion>
+
+    <!-- JSON file of the microfrontends used and their version -->
+    <microfrontendsJSONPath>microfrontends.json</microfrontendsJSONPath>
+
+    <!-- OpenMRS modules -->
+
+    <!-- in dev -->
+    <initializerVersion>2.1.0-SNAPSHOT</initializerVersion>
+    <fhir2Version>1.2.0-SNAPSHOT</fhir2Version>
+    <webservices.restVersion>2.30.0-SNAPSHOT</webservices.restVersion>
+
+    <idgenVersion>4.6.0</idgenVersion>
+    <legacyuiVersion>1.8.2</legacyuiVersion>
+    <addresshierarchyVersion>2.14.2</addresshierarchyVersion>
+    <metadatamappingVersion>1.3.5</metadatamappingVersion>
+    <metadatasharingVersion>1.7.0</metadatasharingVersion>
+    <appuiVersion>1.13.0</appuiVersion>
+    <uicommonsVersion>2.16.0</uicommonsVersion>
+    <uiframeworkVersion>3.20.0</uiframeworkVersion>
+    <appframeworkVersion>2.16.0</appframeworkVersion>
+
+
+  </properties>
+
+  <dependencies>
+  <dependency>
+      <groupId>org.openmrs</groupId>
+      <artifactId>openmrs-distro-package</artifactId>
+      <type>zip</type>
+      <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>net.mekomsolutions</groupId>
+      <artifactId>openmrs-config-easydoc</artifactId>
+      <type>zip</type>
+      <version>${openmrsConfigVersion}</version>
+    </dependency>
+      <dependency>
+      <groupId>net.mekomsolutions</groupId>
+      <artifactId>eip-routes-senaite</artifactId>
+      <version>${eipRoutesSenaite}</version>
+      <type>zip</type>
+    </dependency>
+    <dependency>
+      <groupId>com.mekomsolutions.eip</groupId>
+      <artifactId>openmrs-odoo</artifactId>
+      <version>${eipRoutesOdoo}</version>
+      <type>zip</type>
+    </dependency>
+    <dependency>
+      <groupId>org.openmrs.web</groupId>
+      <artifactId>openmrs-webapp</artifactId>
+      <version>${openMRSVersion}</version>
+      <type>war</type>
+    </dependency>
+    <dependency>
+      <groupId>org.openmrs.module</groupId>
+      <artifactId>legacyui-omod</artifactId>
+      <version>${legacyuiVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openmrs.module</groupId>
+      <artifactId>idgen-omod</artifactId>
+      <version>${idgenVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openmrs.module</groupId>
+      <artifactId>fhir2-omod</artifactId>
+      <version>${fhir2Version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openmrs.module</groupId>
+      <artifactId>webservices.rest-omod</artifactId>
+      <version>${webservices.restVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openmrs.module</groupId>
+      <artifactId>initializer-omod</artifactId>
+      <version>${initializerVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openmrs.module</groupId>
+      <artifactId>addresshierarchy-omod</artifactId>
+      <version>${addresshierarchyVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openmrs.module</groupId>
+      <artifactId>metadatamapping-omod</artifactId>
+      <version>${metadatamappingVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openmrs.module</groupId>
+      <artifactId>metadatasharing-omod</artifactId>
+      <version>${metadatasharingVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openmrs.module</groupId>
+      <artifactId>appui-omod</artifactId>
+      <version>${appuiVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openmrs.module</groupId>
+      <artifactId>appframework-omod</artifactId>
+      <version>${appframeworkVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openmrs.module</groupId>
+      <artifactId>uiframework-omod</artifactId>
+      <version>${uiframeworkVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openmrs.module</groupId>
+      <artifactId>uicommons-omod</artifactId>
+      <version>${uicommonsVersion}</version>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.8</version>
+        <executions>
+          <!-- OpenMRS Core -->
+          <execution>
+            <id>copy-openmrs-war</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <excludeTransitive>true</excludeTransitive>
+              <useBaseVersion>true</useBaseVersion>
+              <outputDirectory>${distro.openmrscoreDir}</outputDirectory>
+              <includeArtifactIds>openmrs-webapp</includeArtifactIds>
+            </configuration>
+          </execution>
+         
+          <!-- OpenMRS modules -->
+          <execution>
+            <id>copy-jars</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <excludeTransitive>true</excludeTransitive>
+              <useBaseVersion>true</useBaseVersion>
+              <outputDirectory>${distro.openmrsmodulesDir}</outputDirectory>
+              <!-- copying jars and omods only -->
+              <includeTypes>jar, omod</includeTypes>
+            </configuration>
+          </execution>
+          <!-- OpenMRS config -->
+          <execution>
+            <id>unpack-openmrs-config-easydoc</id>
+            <phase>package</phase>
+            <goals>
+              <goal>unpack-dependencies</goal>
+            </goals>
+            <configuration>
+              <excludeTransitive>true</excludeTransitive>
+              <useBaseVersion>true</useBaseVersion>
+              <outputDirectory>${distro.openmrsconfigDir}</outputDirectory>
+              <includeArtifactIds>openmrs-config-easydoc</includeArtifactIds>
+            </configuration>
+          </execution>
+
+
+           <execution>
+            <id>unpack-openmrs-distro-package</id>
+            <phase>package</phase>
+            <goals>
+              <goal>unpack-dependencies</goal>
+            </goals>
+            <configuration>
+              <excludeTransitive>true</excludeTransitive>
+              <useBaseVersion>true</useBaseVersion>
+              <outputDirectory>${distro.openmrsDistroConfigDir}</outputDirectory>
+              <includeArtifactIds>openmrs-distro-package</includeArtifactIds>
+            </configuration>
+          </execution>
+
+           
+          <!-- EIP routes -->
+          <execution>
+            <id>unpack-eip-routes-senaite</id>
+            <phase>package</phase>
+            <goals>
+              <goal>unpack-dependencies</goal>
+            </goals>
+            <configuration>
+              <excludeTransitive>true</excludeTransitive>
+              <useBaseVersion>true</useBaseVersion>
+              <outputDirectory>${distro.eipRoutesDir}</outputDirectory>
+              <includeArtifactIds>eip-routes-senaite</includeArtifactIds>
+            </configuration>
+          </execution>
+          <execution>
+            <id>unpack-eip-routes-odoo</id>
+            <phase>package</phase>
+            <goals>
+              <goal>unpack-dependencies</goal>
+            </goals>
+            <configuration>
+              <excludeTransitive>true</excludeTransitive>
+              <useBaseVersion>true</useBaseVersion>
+              <outputDirectory>${distro.eipRoutesDir}</outputDirectory>
+              <includeArtifactIds>openmrs-odoo</includeArtifactIds>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>1.7</version>
+        <executions>
+        <execution>
+            <id>move-microfrontends</id>
+            <phase>package</phase>
+            <configuration>
+              <target>
+                <move todir="${distro.microfrontendsDir}">
+                  <fileset dir="${distro.openmrsDistroConfigDir}/microfrontends"/>
+                </move>
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution> 
+
+          <execution>
+            <id>clean-openmrs-distro-directory</id>
+            <phase>package</phase>
+            <configuration>
+              <target>
+                <delete includeEmptyDirs="true">
+                    <fileset dir="${distro.openmrsDistroConfigDir}"/>
+                </delete>
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+          
+          <execution>
+            <id>rename-jars-to-omod</id>
+            <phase>package</phase>
+            <configuration>
+              <target>
+                <move todir="${distro.openmrsmodulesDir}">
+                  <fileset dir="${distro.openmrsmodulesDir}"/>
+                  <mapper type="regexp" from="^(.+)-omod-(.+)\.jar" to="\1-\2.omod"/>
+                </move>
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>rename-openmrs-config</id>
+            <phase>package</phase>
+            <configuration>
+              <target>
+                <move todir="${distro.openmrsconfigDir}">
+                  <fileset dir="${distro.openmrsconfigDir}"/>
+                  <mapper type="regexp" from="^openmrs-config-easydoc(.+)\.zip" to="config.zip"/>
+                </move>
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>move-odoo-routes</id>
+            <phase>package</phase>
+            <configuration>
+              <target>
+                <move todir="${distro.eipRoutesDir}/routes/odoo">
+                  <fileset dir="${distro.eipRoutesDir}/openmrs-odoo-${eipRoutesOdoo}/routes"/>
+                </move>
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+           <execution>
+            <id>clean-odoo-build-directory</id>
+            <phase>package</phase>
+            <configuration>
+              <target>
+                <delete includeEmptyDirs="true">
+                    <fileset dir="${distro.eipRoutesDir}/openmrs-odoo-${eipRoutesOdoo}"/>
+                </delete>
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- packaging the distro as a installable/deployable file -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>package-distro-artifact</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <appendAssemblyId>false</appendAssemblyId>
+              <descriptors>
+                <descriptor>src/main/assembly/assembly.xml</descriptor>
+              </descriptors>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.2.0</version>
+        <configuration>
+          <outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}</outputDirectory>
+          <resources>
+            <resource>
+              <directory>${project.basedir}</directory>
+              <includes>
+                <include>services.yml</include>
+              </includes>
+            </resource>
+          </resources>
+        </configuration>
+        <executions>
+          <execution>
+            <id>copy-resources</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <repositories>
+    <repository>
+      <id>mks-nexus-public</id>
+      <url>https://nexus.mekomsolutions.net/repository/maven-public/</url>
+      <snapshots>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>openmrs-repo</id>
+      <name>OpenMRS Nexus Repository</name>
+      <url>https://mavenrepo.openmrs.org/nexus/content/repositories/public</url>
+    </repository>
+    <repository>
+      <id>sonatype-nexus-snapshots</id>
+      <name>Sonatype Nexus Snapshots</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>interval:10080</updatePolicy>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>openmrs-repo</id>
+      <name>OpenMRS Nexus Repository</name>
+      <url>https://mavenrepo.openmrs.org/nexus/content/repositories/public</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+
+</project>
